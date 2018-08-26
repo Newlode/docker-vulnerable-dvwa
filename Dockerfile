@@ -3,6 +3,9 @@ FROM debian:jessie
 LABEL maintainer "opsxcq@strm.sh"
 
 RUN apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends apt-utils
+
+RUN apt-get update && \
     apt-get upgrade -y && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
     debconf-utils && \
