@@ -22,6 +22,10 @@ RUN apt-get update && \
 COPY php.ini /etc/php5/apache2/php.ini
 COPY dvwa /var/www/html
 
+RUN chown -R mysql:mysql /var/lib/mysql /var/run/mysqld && \
+    service mysql start && \
+    mvn -q verify site
+
 RUN chown www-data:www-data -R /var/www/html && \
     rm /var/www/html/index.html
 
