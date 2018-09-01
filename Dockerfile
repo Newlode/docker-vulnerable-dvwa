@@ -25,6 +25,8 @@ RUN apt-get update && \
 COPY php.ini /etc/php5/apache2/php.ini
 COPY dvwa /var/www/html
 
+RUN cp /var/www/html/config/config.inc.php.dist /var/www/html/config/config.inc.php
+
 RUN chown -R mysql:mysql /var/lib/mysql /var/run/mysqld && \
     service mysql start
 
