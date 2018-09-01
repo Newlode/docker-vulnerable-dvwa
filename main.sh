@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Fix for :
+# Starting MySQL database server: mysqld . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . failed!
+# at container startup
+find /var/lib/mysql/mysql -exec touch -c -a {} +
+
 echo '[+] Starting mysql...'
 service mysql start
 
